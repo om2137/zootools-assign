@@ -203,7 +203,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col ">
-              < HorizontalBar datas={data} labels={behaviourS}/>
+              < HorizontalBar datas={data} labels={locS}/>
             </div>
             <div className="py-1">
               <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a>
