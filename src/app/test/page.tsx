@@ -1,10 +1,12 @@
+"use client"
 import React from "react";
 import { ImCross } from "react-icons/im";
+import { useState } from 'react';
 
 
 
 export default function Modal( ) {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
 
 
   return (
