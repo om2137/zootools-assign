@@ -34,7 +34,8 @@ function HorizontalBar({datas, labels}:types, ) {
     // const labels = ["  Google","  Twitter","  Facebook","  Linkedin","  YouTube","  Other"];
     // const datas = [30000, 20000, 10000, 5000, 3000, 2000]
     const axis:'y' | 'x' = 'y';
-    
+    const dataAlign:'start' | 'center' | 'end' | 'right' | 'left' | 'bottom' | 'top' | undefined = 'end';
+    const Anch:'start' | 'center' | 'end' | 'right' | 'left' | 'bottom' | 'top' | undefined = 'start';
     
     const data = {
         labels: labels,
@@ -87,11 +88,10 @@ function HorizontalBar({datas, labels}:types, ) {
             datalabels: {
                 // display: false,
                 color: "black",
-                align: "end",
-                anchor: "start",
+                align: dataAlign,
+                anchor: Anch,
                 offset: 500,
                 font: {
-                    // weight: 'bold',
                     align: 'right',
                     size: 30
                 },
