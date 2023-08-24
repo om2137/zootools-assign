@@ -156,7 +156,7 @@ function Test(){
         <div>
             <Bar
                 data={data}
-                options={options}
+                // options={options}
             >
 
             </Bar>
