@@ -8,8 +8,8 @@ export default function Home() {
 
   const data = [30000, 20000, 10000, 5000, 3000, 2000];
   const trafficS = ["   Google","   Twitter","   Facebook","   Linkedin","   YouTube","   Other"];
-  const locS = ["  🇺🇸 United states","  🍕 Germany","  🍟 Netherlands","  🌭 India","  🥙 Japan","  🍳 Other"];
-  const behaviourS= ["     🇮🇳  United states","       Germany","       Netherlands","       India","       Japan","       Other"];
+  const locS = ["   United states","  🍕 Germany","  🍟 Netherlands","  🌭 India","  🥙 Japan","  🍳 Other"];
+  const behaviourS= ["       United states","       Germany","       Netherlands","       India","       Japan","       Other"];
   const [time, setTime] = useState('30');
   const [traffic, setTraffic] = useState('source');
   const [location, setLocation] = useState('country');
