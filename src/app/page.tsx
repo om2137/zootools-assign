@@ -4,6 +4,7 @@ import HorizontalBar from "@/component/HorizontalBar";
 import { useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import Modal from "@/component/Modal";
 export default function Home() {
 
   const data = [30000, 20000, 10000, 5000, 3000, 2000];
@@ -169,7 +170,8 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-4">
-            <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See leaderboard</a>
+            {/* <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See leaderboard</a> */}
+            <Modal buttonText={'See Leaderboard'} title={'User leaderboard'}/>
           </div>
         </div>
         {/* traffic */}
@@ -177,8 +179,8 @@ export default function Home() {
           <div className="flex justify-between text-3xl ">
             <div className="font-semibold p-3">Traffic</div>
             <div className="flex">
-              <a className={`text-2xl rounded-lg px-4 py-3 ${traffic === 'source' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('source')}>Source</a>
-              <a  className={`text-2xl rounded-lg px-4 py-3  ${traffic === 'City' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('City')}>City</a>
+              <button className={`text-2xl rounded-lg px-4 py-3 ${traffic === 'source' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('source')}>Source</button>
+              <button  className={`text-2xl rounded-lg px-4 py-3  ${traffic === 'City' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('City')}>City</button>
             </div>
           </div>
           <div className="flex flex-col pt-0 pb-2">
@@ -196,10 +198,10 @@ export default function Home() {
         {/* signup location graph */}
           <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen px-12 py-10 mb-12 mr-16'>
             <div className="flex justify-between text-3xl ">
-              <div className="font-semibold p-3">Signup location</div>
+              <div className="font-semibold p-3">  Signup location</div>
               <div className="flex">
-                <a className={`text-2xl rounded-lg px-4 py-3 ${location === 'country' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('country')}>Country</a>
-                <a  className={`text-2xl rounded-lg px-4 py-3 ${location === 'city' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('city')}>City</a>
+                <button className={`text-2xl rounded-lg px-4 py-3 ${location === 'country' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('country')}>Country</button>
+                <button  className={`text-2xl rounded-lg px-4 py-3 ${location === 'city' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('city')}>City</button>
               </div>
             </div>
             <div className="flex flex-col ">
@@ -214,8 +216,8 @@ export default function Home() {
             <div className="flex justify-between text-3xl ">
               <div className="font-semibold p-3">Behaviour</div>
               <div className="flex">
-                <a className={`text-2xl rounded-lg px-4 py-3  ${behaviour === 'browser' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('browser')}>Browsers</a>
-                <a  className={`text-2xl rounded-lg px-4 py-3 ${behaviour === 'decides' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('decides')}>Decides</a>
+                <button className={`text-2xl rounded-lg px-4 py-3  ${behaviour === 'browser' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('browser')}>Browsers</button>
+                <button className={`text-2xl rounded-lg px-4 py-3 ${behaviour === 'decides' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('decides')}>Decides</button>
               </div>
             </div>
             <div className="flex flex-col">
