@@ -2,15 +2,26 @@
 import Chart from "@/component/Chart";
 import HorizontalBar from "@/component/HorizontalBar";
 import { useState } from "react";
-
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import { HiOutlineLightBulb } from "react-icons/hi";
 export default function Home() {
 
   const data = [30000, 20000, 10000, 5000, 3000, 2000];
   const trafficS = ["   Google","   Twitter","   Facebook","   Linkedin","   YouTube","   Other"];
-  const locS = ["  🍔 United states","  🍕 Germany","  🍟 Netherlands","  🌭 India","  🥙 Japan","  🍳 Other"];
-  const behaviourS= ["       United states","       Germany","       Netherlands","       India","       Japan","       Other"];
+  const locS = ["  🇺🇸 United states","  🍕 Germany","  🍟 Netherlands","  🌭 India","  🥙 Japan","  🍳 Other"];
+  const behaviourS= ["     🇮🇳  United states","       Germany","       Netherlands","       India","       Japan","       Other"];
   const [time, setTime] = useState('30');
-  console.log(time);
+  const [traffic, setTraffic] = useState('source');
+  const [location, setLocation] = useState('country');
+  const [behaviour, setBehaviour] = useState('browser');
+
+  const data1 = [110, 200, 400, 600, 400, 400, 1200, 600, 800, 1000, 100, 800, 700, 900, 600, 1000, 1200, 1100, 1600, 1800, 1700, 1800, 1100, 1700, 1900, 1300, 1700, 1200, 1200, 2700, 2400, 2300, 1900, 2400, 3000];
+  const data2 = [110, 200, 400, 600, 600, 500, 200, 300, 900, 2000, 1500, 800, 500, 1900, 600, 1400, 1200, 1100, 1600, 1800, 1100, 1400, 1500, 1300, 1900, 2500, 1500, 1100, 1200, 2300, 2200, 2700, 1900, 2400, 3000];
+  const data3 = [110, 200, 300, 600, 400, 700, 1200, 800, 900, 1000, 1500, 800, 700, 900, 600, 1000, 1200, 1100, 1600, 1800, 1100, 1400, 1500, 1700, 1900, 1500, 1600, 1800, 1200, 2000, 2400, 2200, 1900, 2400, 3000];
+  const data4 = [110, 200, 300, 600, 200, 500, 1400, 200, 100, 2000, 1300, 500, 400, 200, 600, 2000, 1500, 1100, 1600, 1800, 1500, 1400, 1100, 1600, 1900, 1300, 1100, 1300, 1600, 2200, 2400, 2100, 1300, 2300, 3000];
+  
+  
+
   return (
     <main className="flex w-min-screen h-screen flex-col items-center ">
 
@@ -39,15 +50,17 @@ export default function Home() {
       {/* main graph */}
       <div className='flex w-screen px-40 mb-12'>
         <div className='w-screen shadow-lg rounded-xl p-12'>
-          <div className='flex flex-col'>
-            <span className='text-5xl font-semibold'>
+          <div className='relative h-[28rem] flex flex-col'>
+            <span className='absolute top-4 text-5xl font-semibold'>
               100,000
             </span>
-            <span className='text-3xl p-2'>
+            <span className='absolute top-16 text-3xl p-2'>
               Participants
             </span>
             <div className="h-96">
-              <Chart />
+              <Chart datas={
+                time === '1' ? data1 : time === '24' ? data2 : time === '30' ? data3 : data4
+              }/>
             </div>
             
           </div>
@@ -56,7 +69,7 @@ export default function Home() {
       </div>
 
       {/* zootools insights */}
-      <div className='flex w-screen px-40 mb-12'>
+      <div className='flex w-screen px-40  mb-12'>
         <div className='shadow-md shadow-gray-300 rounded-xl w-screen p-12 mb-12'>
           <div className='flex flex-col'>
             <span className='text-5xl font-semibold'>ZooTools insights</span>
@@ -69,22 +82,38 @@ export default function Home() {
               <span className='text-3xl font-semibold'>
                 Summary
               </span>
-              <div className='text-xl p-4'>
-                <div className='flex p-4'>
-                  <p className="font-semibold">Signups are slowing down.</p> 
-                  <p>&nbsp;-5% new than last week</p>
+              <div className='text-xl py-4'>
+                <div className='flex py-2'>
+                  <p className="p-3 mr-6 bg-[#ff624d] rounded-lg"><TiArrowSortedDown color='white' size='24px'/> </p>
+                  <div className="flex items-center">
+                    <p className="font-semibold align-middle py-auto"> Signups are slowing down.</p> 
+                    <p>&nbsp;-5% new than last week</p>
+                  </div>
+                  
                 </div>
-                <div className='flex p-4'>
-                  <p className="font-semibold">80% </p> 
-                  <p>&nbsp;of your signups were invited by other members.</p>
+                <div className='flex py-2'>
+                  <p className="p-3 mr-6 bg-[#4dff54] rounded-lg"><TiArrowSortedUp color='white' size='24px'/> </p>
+                  <div className="flex items-center">
+                    <p className="font-semibold">80% </p> 
+                    <p>&nbsp;of your signups were invited by other members.</p>
+                  </div>
+                  
                 </div>
-                <div className='flex p-4'>
-                  <p className="font-semibold">80% </p> 
-                  <p>&nbsp;of your signups were invited by a friend</p>
+                <div className='flex py-2'>
+                  <p className="p-3 mr-6 bg-[#ffe24d] rounded-lg"><HiOutlineLightBulb  size='24px'/> </p>
+                  <div className="flex items-center">
+                    <p className="font-semibold">80% </p> 
+                    <p>&nbsp;of your signups were invited by a friend</p>
+                  </div>
+                  
                 </div>
-                <div className='flex p-4'>
-                  <p className="font-semibold">80% </p> 
-                  <p>&nbsp;of your signups were invited by a friend</p>
+                <div className='flex py-2'>
+                  <p className="p-3 mr-6 bg-[#ffe24d] rounded-lg"><HiOutlineLightBulb  size='24px'/> </p>
+                  <div className="flex items-center">
+                    <p className="font-semibold">80% </p> 
+                    <p>&nbsp;of your signups were invited by a friend</p>
+                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -140,23 +169,24 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-4">
-            <a className="bg-gray-100 text-xl font-semibold rounded-lg py-2 px-4" href='/update'>See leaderboard</a>
+            <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See leaderboard</a>
           </div>
         </div>
         {/* traffic */}
-        <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen px-12 py-10 mb-12 mr-4'>
+        <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen px-12 py-10 mb-12 '>
           <div className="flex justify-between text-3xl ">
             <div className="font-semibold p-3">Traffic</div>
             <div className="flex">
-              <p className="bg-slate-100 text-2xl rounded-lg px-4 py-3 font-semibold">Source</p>
-              <p  className="hover:bg-slate-100 text-2xl rounded-lg px-4 py-3">City</p>
+              <a className={`text-2xl rounded-lg px-4 py-3 ${traffic === 'source' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('source')}>Source</a>
+              <a  className={`text-2xl rounded-lg px-4 py-3  ${traffic === 'City' ? 'bg-[#f0f0f0] font-semibold':'bg-white'}`} onClick={() => setTraffic('City')}>City</a>
             </div>
           </div>
           <div className="flex flex-col pt-0 pb-2">
+            
             < HorizontalBar datas={data} labels={trafficS}/>
           </div>
-          <div className="py-1">
-            <a className="bg-gray-100 text-xl font-semibold rounded-lg py-2 px-4" href='/update'>See leaderboard</a>
+          <div>
+            <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See leaderboard</a>
           </div>
         </div>
       </div>
@@ -168,31 +198,31 @@ export default function Home() {
             <div className="flex justify-between text-3xl ">
               <div className="font-semibold p-3">Signup location</div>
               <div className="flex">
-                <p className="bg-slate-100 text-2xl rounded-lg px-4 py-3 font-semibold">Country</p>
-                <p  className="hover:bg-slate-100 text-2xl rounded-lg px-4 py-3">City</p>
+                <a className={`text-2xl rounded-lg px-4 py-3 ${location === 'country' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('country')}>Country</a>
+                <a  className={`text-2xl rounded-lg px-4 py-3 ${location === 'city' ? 'bg-[#f0f0f0] font-semibold' : 'bg-white'}`} onClick={() => setLocation('city')}>City</a>
               </div>
             </div>
-            <div className="flex flex-col pt-4 pb-2">
+            <div className="flex flex-col ">
               < HorizontalBar datas={data} labels={locS}/>
             </div>
             <div className="py-1">
-              <a className="bg-gray-100 text-xl font-semibold rounded-lg py-2 px-4" href='/update'>See all countries</a>
+              <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a>
             </div>
           </div>
         {/* behaviour graph */}
-        <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen px-12 py-10 mb-12 mr-4'>
+        <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen px-12 py-10 mb-12'>
             <div className="flex justify-between text-3xl ">
-              <div className="font-semibold p-3">Signup location</div>
+              <div className="font-semibold p-3">Behaviour</div>
               <div className="flex">
-                <p className="bg-slate-100 text-2xl rounded-lg px-4 py-3 font-semibold">Browsers</p>
-                <p  className="hover:bg-slate-100 text-2xl rounded-lg px-4 py-3">Decides</p>
+                <a className={`text-2xl rounded-lg px-4 py-3  ${behaviour === 'browser' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('browser')}>Browsers</a>
+                <a  className={`text-2xl rounded-lg px-4 py-3 ${behaviour === 'decides' ? 'bg-[#f0f0f0] font-semibold': 'bg-white'}`} onClick={() => setBehaviour('decides')}>Decides</a>
               </div>
             </div>
-            <div className="flex flex-col pt-4 pb-2">
+            <div className="flex flex-col">
               < HorizontalBar datas={data} labels={behaviourS}/>
             </div>
             <div className="py-1">
-              <a className="bg-gray-100 text-xl font-semibold rounded-lg py-2 px-4" href='/update'>See all countries</a>
+              <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a>
             </div>
           </div>
       </div>

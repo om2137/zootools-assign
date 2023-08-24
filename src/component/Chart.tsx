@@ -1,7 +1,5 @@
 "use client"
 import React from 'react'
-// import { useClient } from 'next/client'
-
 import { 
     Chart as ChartJS, 
     BarElement,
@@ -12,21 +10,30 @@ import {
  } from 'chart.js'
  import { Bar } from 'react-chartjs-2'
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, );
 
-function Chart() {
+interface Props {
+    datas: number[];
+}
+
+function Chart( {datas}: Props) {
     const labels = [];
-    const datas = [110, 200, 300, 600, 400, 700, 1200, 800, 900, 1000, 1500, 800, 700, 900, 600, 1000, 1200, 1100, 1600, 1800, 1100, 1400, 1500, 1700, 1900, 1500, 1600, 1800, 1200, 2000, 2400, 2200, 1900, 2400, 3000];
+    const x:"center" | "left" | "right" | undefined = "center";
+    const y:"center" | "top" | "bottom" | undefined = "bottom";
+    const titleA:"center" | "left" | "right" | undefined = "center"; 
+    const bodyA:"center" | "left" | "right" | undefined = "center";
     for (let i = 0; i < 35; i++) {
         labels.push(i);
     }
     
-    
+    const titleTooltip = (tooltipItem:any) => {
+        return '3000 signups';
+    }
     const data = {
         labels: labels,
         datasets: [
             {
-                label: 'Participants',
+                label: 'signups',
                 data: datas,
                 backgroundColor: "#fed500",
                 borderWidth: 0,
@@ -37,21 +44,16 @@ function Chart() {
         ]
     }
     const options = {
+        layout: {
+            padding: {
+                top: 100
+            }
+        },
         scales: {
             x: {
-                
                display: false
-                // border:{dash: [1, 4]},
-                // ticks: {
-                //     display: false,
-                // },
-                // grid:{
-                //     drawTicks: false,
-                // }
             },
             y: { 
-                // display: false,
-                
                 border:{
                     dash: [1, 4],
                     display: false,
@@ -66,13 +68,49 @@ function Chart() {
        },
        maintainAspectRatio: false,
        plugins: {
+            
             legend: {
                 display: false
             },
             datalabels: {
                 display: false,
-                
-              }
+            },
+            tooltip: {
+                backgroundColor: '#ffffff',
+                titleColor: 'rgba(0, 0, 0, 1)',
+                titleAlign: titleA,
+                bodyColor: 'rgba(144, 144, 144, 1)',
+                bodyAlign: bodyA,
+                borderColor: '#d6d6d6',
+                titleFont: {
+                    size: 20,
+                    weight: 'bold',
+                    label: 'Signups',
+                },
+                bodyFont: {
+                    size: 16,
+                    weight: 'bold',
+                    color: '#909090',
+                },
+                padding: 18,
+                xAlign: x,
+                yAlign: y,
+                caretSize: 12,
+                borderWidth: 1,
+                displayColors: false,
+                shadowOffsetX: 5,
+                shadowOffsetY: 5,
+                shadowBlur: 5,
+                shadowColor: '#fc0000',
+                callbacks: {
+                    title: titleTooltip,
+                    label: function(tooltipItem:any) {
+                        return 'August 1';
+                    },
+                },
+
+            },
+            
         }
         
     }
@@ -80,7 +118,7 @@ function Chart() {
   return (
     <div>
         
-        <div className='w-min-screen h-96'>
+        <div className='w-min-screen h-[28rem]'>
             <Bar 
                 data={data}
                 options={options}
