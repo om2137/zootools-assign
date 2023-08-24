@@ -1,12 +1,9 @@
 import React from "react";
 import { ImCross } from "react-icons/im";
 
-interface Props {
-    title: string;
-    buttonText: string;
-}
 
-export default function Modal({title, buttonText}:Props ) {
+
+export default function Modal( ) {
   const [showModal, setShowModal] = React.useState(false);
 
 
@@ -17,7 +14,7 @@ export default function Modal({title, buttonText}:Props ) {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        {buttonText}
+        buttonText
       </button>
       {showModal ? (
         <>
@@ -30,7 +27,7 @@ export default function Modal({title, buttonText}:Props ) {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    {title} 
+                    title
                   </h3>
                   <a className="flex items-center" onClick={() => setShowModal(false)}><ImCross color='black' size='24px'/></a>
                 </div>
