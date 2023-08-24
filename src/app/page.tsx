@@ -4,6 +4,7 @@ import HorizontalBar from "@/component/HorizontalBar";
 import { useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { BsPeople } from "react-icons/bs";
 import Modal from "@/component/Modal";
 export default function Home() {
 
@@ -52,10 +53,10 @@ export default function Home() {
       <div className='flex w-screen px-40 mb-12'>
         <div className='w-screen shadow-lg rounded-xl p-12'>
           <div className='relative h-[28rem] flex flex-col'>
-            <span className='absolute top-4 text-5xl font-semibold'>
-              100,000
+            <span className='flex absolute top-4 text-5xl font-semibold'>
+              100,000 <p className=" absolute left-48  px-4 mr-6 rounded-lg"><BsPeople style = {{transform: 'scaleX(-1)' }}  size='48px'/> </p>
             </span>
-            <span className='absolute top-16 text-3xl p-2'>
+            <span className='flex absolute top-16 text-3xl p-2'>
               Participants
             </span>
             <div className="h-96">
