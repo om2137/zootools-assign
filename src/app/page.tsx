@@ -34,18 +34,18 @@ export default function Home() {
         </div>
         
         <div className='flex text-2xl justify-center border border-white rounded-lg shadow-md shadow-gray-400 py-1 px-2'>
-          <a className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl ${time === '1' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('1')}>
+          <button className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl ${time === '1' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('1')}>
             1h 
-          </a> 
-          <a className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '24' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('24')}>
+          </button> 
+          <button className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '24' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('24')}>
             24h
-          </a>
-          <a className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '30' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('30')}>
+          </button>
+          <button className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '30' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`} onClick={() => setTime('30')}>
             30d 
-          </a>
-          <a className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '60' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`}  onClick={() => setTime('60')} >
+          </button>
+          <button className={`text-gray-500 font-semibold my-1 mx-2 py-2 px-4 rounded-xl  ${time === '60' ? 'bg-[#e2e3e8]' : 'bg-[#f8f9fa]'}`}  onClick={() => setTime('60')} >
             60d
-          </a>
+          </button>
         </div>
       </div>
       
@@ -139,9 +139,9 @@ export default function Home() {
       <div className='flex w-screen px-40 mb-12'>
         {/* user leaderboard */}
         <div className='w-1/2 shadow-xl shadow-gray-300 rounded-xl w-screen p-12 mb-12 mr-16'>
-          <div className="text-[2rem] font-semibold">User leaderboard</div>
-          <div className="flex justify-between ">
-            <div className="w-[50%] flex flex-col">
+          <div className="text-[2rem] font-semibold py-1">User leaderboard</div>
+          <div className="flex h-96 justify-between items-center">
+            <div className="w-[50%] flex flex-col ">
               <div className="text-2xl py-8">Email </div>
               <div className="text-[1.4rem]">
                 <p className=" pb-8">paula.suarze@con...es</p>
@@ -188,8 +188,9 @@ export default function Home() {
             
             < HorizontalBar datas={data} labels={trafficS}/>
           </div>
-          <div>
-            <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See leaderboard</a>
+          <div className="pt-4">
+            {/* <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See traffic source</a> */}
+            <Modal buttonText={'See traffic source'} title={'Traffic source'}/>
           </div>
         </div>
       </div>
@@ -208,8 +209,9 @@ export default function Home() {
             <div className="flex flex-col ">
               < HorizontalBar datas={data} labels={locS}/>
             </div>
-            <div className="py-1">
-              <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a>
+            <div className="pt-4">
+              {/* <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a> */}
+              <Modal buttonText={'See all countries'} title={'Signup Location'}/>
             </div>
           </div>
         {/* behaviour graph */}
@@ -224,8 +226,9 @@ export default function Home() {
             <div className="flex flex-col">
               < HorizontalBar datas={data} labels={behaviourS}/>
             </div>
-            <div className="py-1">
-              <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a>
+            <div className="pt-4">
+              {/* <a className="bg-gray-100 text-xl font-semibold rounded-xl py-4 px-6" href='/update'>See all countries</a> */}
+              <Modal buttonText={'See all countries'} title={'Signup Location'}/>
             </div>
           </div>
       </div>

@@ -32,7 +32,7 @@ export default function Modal({title, buttonText}:Props ) {
                   <h3 className="text-3xl font-semibold">
                     {title} 
                   </h3>
-                  <a className="flex items-center" onClick={() => setShowModal(false)}><ImCross color='black' size='24px'/></a>
+                  <button className="flex items-center" onClick={() => setShowModal(false)}><ImCross color='black' size='24px'/></button>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 w-96 flex-auto0">
